@@ -449,7 +449,8 @@ MonoBehaviour:
   jumpHeight: 15
   gravityScale: 3
   mainCamera: {fileID: 519420031}
-  tr: {fileID: 1860150488}
+  dashingVelocity: 14
+  dashingTime: 0.2
 --- !u!70 &1860150486
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -554,7 +555,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 0.01
   m_PreviewTimeScale: 0
   m_Parameters:
     serializedVersion: 3
@@ -625,11 +626,11 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 1
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0
   m_MaskInteraction: 0
   m_Autodestruct: 0
   m_Emitting: 0

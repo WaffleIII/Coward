@@ -12,12 +12,7 @@ public class CharacterController2D : MonoBehaviour
     public float jumpHeight = 6.5f;
     public float gravityScale = 1.5f;
     public Camera mainCamera;
-
-    private bool canDash = true;
-    private bool isDashing;
-    private float dashingPower = 24f;
-    private float dashingTime = 0.2f;
-    private float dashingCD = 1f;
+    private TrailRenderer tr;
 
     bool facingRight = true;
     float moveDirection = 0;
@@ -27,7 +22,13 @@ public class CharacterController2D : MonoBehaviour
     CapsuleCollider2D mainCollider;
     Transform t;
 
-    [SerializeField] private TrailRenderer tr;
+    // Dashing variables
+    [Header("Dashing")]
+    [SerializeField] private float dashingVelocity = 14f;
+    [SerializeField] private float dashingTime = 0.5f;
+    private Vector2 dashingDir;
+    private bool isDashing;
+    private bool canDash = true;
 
     // Use this for initialization
     void Start()
@@ -35,6 +36,7 @@ public class CharacterController2D : MonoBehaviour
         t = transform;
         r2d = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<CapsuleCollider2D>();
+        tr = GetComponent<TrailRenderer>();
         r2d.freezeRotation = true;
         r2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         r2d.gravityScale = gravityScale;
@@ -49,9 +51,30 @@ public class CharacterController2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var dashInput = Input.GetButtonDown("Dash");
+
+        if (dashInput && canDash)
+        {
+            isDashing = true;
+            canDash = false;
+            tr.emitting = true;
+            dashingDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            if (dashingDir == Vector2.zero)
+            {
+                dashingDir = new Vector2(transform.localScale.x, 0f);
+            }
+            StartCoroutine(stopDashing());
+        }
+
         if (isDashing)
         {
+            r2d.velocity = dashingDir.normalized * dashingVelocity;
             return;
+        }
+
+        if (isGrounded)
+        {
+            canDash = true;
         }
 
         // Movement controls
@@ -93,12 +116,6 @@ public class CharacterController2D : MonoBehaviour
         {
             mainCamera.transform.position = new Vector3(t.position.x, cameraPos.y, cameraPos.z);
         }
-
-        // Dashing
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
-        {
-            StartCoroutine(Dash());
-        }
     }
 
     void FixedUpdate()
@@ -135,19 +152,10 @@ public class CharacterController2D : MonoBehaviour
         Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(colliderRadius, 0, 0), isGrounded ? Color.green : Color.red);
     }
 
-    private IEnumerator Dash()
+    private IEnumerator stopDashing()
     {
-        canDash = false;
-        isDashing = true;
-        float originalGravity = gravityScale;
-        gravityScale = 0f;
-        r2d.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
-        tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;
-        gravityScale = originalGravity;
         isDashing = false;
-        yield return new WaitForSeconds(dashingCD);
-        canDash = true;
     }
 }
