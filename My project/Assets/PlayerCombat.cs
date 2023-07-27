@@ -11,7 +11,7 @@ public class PlayerCombat : MonoBehaviour
     public LayerMask enemyLayers;
 
     public float attackRange = 0.5f;
-    public int attackDamage = 40;
+    public int attackDamage = 10;
     public float attackRate = 2f;
     private float nextAttack = 0f;
 
@@ -32,6 +32,7 @@ public class PlayerCombat : MonoBehaviour
 
     void Attack()
     {
+        // Find a way to work this into all enemies (using enemy layers) and not just one set enemy please
         float attackDistance = Vector3.Distance(enemy.transform.position, transform.position);
         
         if (attackDistance <= 3)
