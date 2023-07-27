@@ -29,6 +29,7 @@ public class CharacterController2D : MonoBehaviour
     private Vector2 dashingDir;
     private bool isDashing;
     private bool canDash = true;
+    private int dashTimes;
 
     // Use this for initialization
     void Start()
@@ -56,14 +57,22 @@ public class CharacterController2D : MonoBehaviour
         if (dashInput && canDash)
         {
             isDashing = true;
-            canDash = false;
+            dashTimes += 1;
             tr.emitting = true;
             dashingDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
             if (dashingDir == Vector2.zero)
             {
-                dashingDir = new Vector2(transform.localScale.x, 0f);
+                dashingDir = new Vector2(transform.localScale.x, 0);
             }
+
             StartCoroutine(stopDashing());
+
+            if (dashTimes >= 3)
+            {
+                canDash = false;
+                dashTimes = 0;
+            }
         }
 
         if (isDashing)
