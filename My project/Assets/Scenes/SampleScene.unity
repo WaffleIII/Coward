@@ -985,7 +985,7 @@ TrailRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
-  m_MotionVectors: 0
+  m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
@@ -1018,7 +1018,7 @@ TrailRenderer:
   m_PreviewTimeScale: 0
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.5
+    widthMultiplier: 1
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -1032,16 +1032,16 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.50382847
-        value: 0.28956062
-        inSlope: -1.4803627
-        outSlope: -1.4803627
+        time: 0.45530048
+        value: 0.4851613
+        inSlope: -1.8004814
+        outSlope: -1.8004814
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1
+        time: 0.9323843
         value: 0
         inSlope: 0
         outSlope: 0
@@ -1092,7 +1092,7 @@ TrailRenderer:
   m_MinVertexDistance: 0
   m_MaskInteraction: 0
   m_Autodestruct: 0
-  m_Emitting: 1
+  m_Emitting: 0
   m_ApplyActiveColorSpace: 1
 --- !u!114 &1860150489
 MonoBehaviour:
