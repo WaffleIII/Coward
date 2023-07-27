@@ -81,20 +81,20 @@ public class CharacterController2D : MonoBehaviour
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && (isGrounded || Mathf.Abs(r2d.velocity.x) > 0.01f))
         {
             this.GetComponent<Animator>().SetBool("Walking", true);
-            this.GetComponent<Animator>().Play("Walking");
+            this.GetComponent<Animator>().SetBool("Idle", false);
+
             moveDirection = Input.GetKey(KeyCode.A) ? -1 : 1;
-            this.GetComponent<Animator>().SetBool("Walking", false);
-            this.GetComponent<Animator>().Play("Idle");
+
         }
         else
         {
             if (isGrounded || r2d.velocity.magnitude < 0.01f)
             {
-                this.GetComponent<Animator>().SetBool("Walking", true);
-                this.GetComponent<Animator>().Play("Walking");
-                moveDirection = 0;
                 this.GetComponent<Animator>().SetBool("Walking", false);
-                this.GetComponent<Animator>().Play("Idle");
+                this.GetComponent<Animator>().SetBool("Idle", true);
+
+                moveDirection = 0;
+
             }
         }
 
