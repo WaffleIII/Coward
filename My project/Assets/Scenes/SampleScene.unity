@@ -341,7 +341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 587320382}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,8 +815,9 @@ GameObject:
   - component: {fileID: 1860150488}
   - component: {fileID: 1860150489}
   - component: {fileID: 1860150490}
+  - component: {fileID: 1860150492}
   - component: {fileID: 1860150491}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -864,7 +865,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -1547527627, guid: ff4fecfe0289643c39d0b65697809db2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -883,8 +884,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1860150481}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.38, y: -3.81, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -6.81, y: -3.28, z: 0}
+  m_LocalScale: {x: 0.1038, y: 0.1038, z: 0.1038}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 587320382}
@@ -942,7 +943,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 13.377698, y: 27.860058}
   m_Direction: 0
 --- !u!50 &1860150487
 Rigidbody2D:
@@ -1127,7 +1128,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1360838594}
---- !u!95 &1860150491
+--- !u!111 &1860150491
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860150481}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 6bc302b530fa96f4d861b0ba009adcd0, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!95 &1860150492
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -1137,7 +1153,7 @@ Animator:
   m_GameObject: {fileID: 1860150481}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7477d3bf83c5d4f49a96978b27bba40e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 58e9043a51deff5419be578ae5ccfa04, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
