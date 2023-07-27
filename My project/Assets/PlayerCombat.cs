@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     public Transform enemy;
+    Vector3 currentDirection;
 
     public Transform attackPoint;
     public LayerMask enemyLayers;
@@ -35,8 +36,16 @@ public class PlayerCombat : MonoBehaviour
         
         if (attackDistance <= 3)
         {
-            // Play the animation
-            print("animation played!");
+            if (currentDirection == transform.right)
+            {
+                // Play the animation
+                Debug.Log("Frontstab played!");
+            }
+            else if (currentDirection == -transform.right)
+            {
+                // Play the backstab animation
+                Debug.Log("Backstab played!");
+            }
         }
 
         // Detect enemies in range of attack
