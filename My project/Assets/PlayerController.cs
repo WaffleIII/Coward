@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movement")]
     public float MovementSpeed;
-    private float Direction;
+    public float Direction;
 
     [Header("Jumping")]
     public float JumpStrength;

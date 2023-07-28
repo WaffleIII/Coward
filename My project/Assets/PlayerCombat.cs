@@ -16,6 +16,7 @@ public class PlayerCombat : MonoBehaviour
     private float nextAttack = 0f;
 
     public float attackDistance;
+    private float directionFaced;
 
     // Update is called once per frame
     void Update()
@@ -33,16 +34,17 @@ public class PlayerCombat : MonoBehaviour
     void Attack()
     {
         // Find a way to work this into all enemies (using enemy layers) and not just one set enemy please
+        directionFaced = Input.GetAxisRaw("Horizontal");
         float attackDistance = Vector3.Distance(enemy.transform.position, transform.position);
         
         if (attackDistance <= 3)
         {
-            if (currentDirection == transform.right)
+            if (directionFaced == 1)
             {
                 // Play the animation
                 Debug.Log("Frontstab played!");
             }
-            else if (currentDirection == -transform.right)
+            else if (directionFaced == -1)
             {
                 // Play the backstab animation
                 Debug.Log("Backstab played!");

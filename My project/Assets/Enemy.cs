@@ -28,8 +28,6 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Enemy died");
-
         // Play death animation
 
         GetComponent<Collider2D>().enabled = false;
