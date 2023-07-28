@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Triggers a dash
-        if (Input.GetKeyDown(KeyCode.LeftShift) && CanDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && CanDash && (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0))
         {
             IsDashing = true;
             tr.emitting = true;
