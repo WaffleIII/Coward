@@ -93,7 +93,7 @@ public class CharacterController2D : MonoBehaviour
             this.GetComponent<Animator>().SetBool("Idle", false);
 
             moveDirection = Input.GetKey(KeyCode.A) ? -1 : 1;
-
+            
         }
         else
         {
