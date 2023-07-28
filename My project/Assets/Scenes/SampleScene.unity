@@ -1596,7 +1596,6 @@ GameObject:
   - component: {fileID: 1860150489}
   - component: {fileID: 1860150495}
   - component: {fileID: 1860150492}
-  - component: {fileID: 1860150491}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -1645,7 +1644,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1547527627, guid: ff4fecfe0289643c39d0b65697809db2, type: 3}
+  m_Sprite: {fileID: -1192634993, guid: ff4fecfe0289643c39d0b65697809db2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1734,21 +1733,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1360838594}
---- !u!111 &1860150491
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1860150481}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 6bc302b530fa96f4d861b0ba009adcd0, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!95 &1860150492
 Animator:
   serializedVersion: 5

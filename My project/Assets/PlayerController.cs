@@ -54,14 +54,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //Moves the player if dashing
-        if (IsDashing)
-        {
-            rb.velocity = DashingDirection.normalized * DashingVelocity;
-            rb.gravityScale = 0;
-            return;
-        }
-
         //flips the sprite so the player faces the correct way
         if (Direction == 1)
         {
@@ -73,15 +65,41 @@ public class PlayerController : MonoBehaviour
         }
 
         //Plays animations
-        if (Direction == 0)
+        if (IsDashing)
+        {
+            Animator.SetBool("Walking", false);
+            Animator.SetBool("Idle", false);
+            Animator.SetBool("Airborn", false);
+            Animator.SetBool("Blink", true);
+        }
+        else if (rb.velocity.y != 0)
+        {
+            Animator.SetBool("Walking", false);
+            Animator.SetBool("Idle", false);
+            Animator.SetBool("Airborn", true);
+            Animator.SetBool("Blink", false);
+        }
+        else if (Direction == 0)
         {
             Animator.SetBool("Walking", false);
             Animator.SetBool("Idle", true);
+            Animator.SetBool("Airborn", false);
+            Animator.SetBool("Blink", false);
         }
         else
         {
             Animator.SetBool("Walking", true);
             Animator.SetBool("Idle", false);
+            Animator.SetBool("Airborn", false);
+            Animator.SetBool("Blink", false);
+        }
+
+        //Moves the player if dashing
+        if (IsDashing)
+        {
+            rb.velocity = DashingDirection.normalized * DashingVelocity;
+            rb.gravityScale = 0;
+            return;
         }
     }
 
