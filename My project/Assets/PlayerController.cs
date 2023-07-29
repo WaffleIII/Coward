@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public TrailRenderer tr;
     public Animator Animator;
     public SpriteRenderer sr;
+    public Transform tf;
 
     [Header("Movement")]
     public float MovementSpeed;
@@ -57,11 +58,14 @@ public class PlayerController : MonoBehaviour
         //flips the sprite so the player faces the correct way
         if (Direction == 1)
         {
-            sr.flipX = false;
+
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            //sr.flipX = false;
         }
         else if (Direction == -1)
         {
-            sr.flipX = true;
+            transform.eulerAngles = new Vector3(0, 180, 0);
+            //sr.flipX = true;
         }
 
         //Plays animations

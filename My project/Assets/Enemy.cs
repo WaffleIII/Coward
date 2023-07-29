@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour
         // Play death animation
 
         GetComponent<Collider2D>().enabled = false;
+        GetComponent<EnemyAI>().enabled = false;
         this.enabled = false;
+        Destroy(gameObject, 3);
     }
 }
