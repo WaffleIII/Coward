@@ -8,7 +8,9 @@ public class EnemyAI : MonoBehaviour
     public GameObject pointB;
     private Rigidbody2D rb;
     private Transform currentPoint;
+    public GameObject player;
 
+    public int damage;
     public float speed;
 
     void Start()
@@ -55,5 +57,14 @@ public class EnemyAI : MonoBehaviour
         Gizmos.DrawWireSphere(pointA.transform.position, 0.5f);
         Gizmos.DrawWireSphere(pointB.transform.position, 0.5f);
         Gizmos.DrawLine(pointA.transform.position, pointB.transform.position);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            player.GetComponent<Player>().TakeDamage(damage);
+            player.GetComponent<PlayerHealth>().Damage(damage);
+        }
     }
 }

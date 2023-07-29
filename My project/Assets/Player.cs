@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    public int maxHP = 10;
-    private int currentHP;
+    public int maxHP;
+    public int currentHP;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour
 
         if (currentHP <= 0)
         {
-            Debug.Log("Enemy Destroyed!");
             Die();
         }
     }
@@ -29,9 +28,12 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         // Play death animation
+        // Wait a few seconds then switch to restart screen or whatever game over screen we make
 
         GetComponent<Collider2D>().enabled = false;
-        GetComponent<EnemyAI>().enabled = false;
+        GetComponent<PlayerController>().enabled = false;
+        GetComponent<PlayerCombat>().enabled = false;
+        GetComponent<PlayerHealth>().enabled = false;
         this.enabled = false;
         Destroy(gameObject, 3);
     }

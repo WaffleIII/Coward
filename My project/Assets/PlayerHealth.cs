@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public Image healthBar;
+    public GameObject player;
 
     float health, maxHealth = 100;
     float lerpSpeed;
