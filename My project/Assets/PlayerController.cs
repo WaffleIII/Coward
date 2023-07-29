@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Jumping")]
     public float JumpStrength;
+    private float OriginalJumpStrength;
+    public float BounusJumpStrength;
+    public float BounusJumpInputWindow;
     private bool IsGrounded = true;
 
     [Header("Dashing")]
@@ -27,10 +30,15 @@ public class PlayerController : MonoBehaviour
     public float DashTime;
 
     [Header("Quick Falling")]
-    private bool CanQFall = true;
-    private bool IsQFalling = false;
     public float QFallVelocity;
     public float QFallTime;
+    private bool IsQFalling = false;
+    
+
+    void Start()
+    {
+        OriginalJumpStrength = JumpStrength;
+    }
 
     void Update()
     {
@@ -42,7 +50,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, JumpStrength);
             IsGrounded = false;
-            CanQFall = true;
         }
 
         //Triggers a dash
@@ -51,7 +58,6 @@ public class PlayerController : MonoBehaviour
             IsDashing = true;
             tr.emitting = true;
             DashingDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            CanQFall = false;
 
             StartCoroutine(StopDashing());
 
@@ -63,7 +69,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Triggers a "quick fall"
-        if (Input.GetKeyDown(KeyCode.LeftControl) && CanQFall)
+        if (Input.GetKeyDown(KeyCode.LeftControl) && !IsDashing)
         {
             IsQFalling = true;
             tr.emitting = true;
@@ -76,14 +82,11 @@ public class PlayerController : MonoBehaviour
         //flips the sprite so the player faces the correct way
         if (Direction == 1)
         {
-
             transform.eulerAngles = new Vector3(0, 0, 0);
-            //sr.flipX = false;
         }
         else if (Direction == -1)
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
-            //sr.flipX = true;
         }
 
         //Plays animations
@@ -128,12 +131,7 @@ public class PlayerController : MonoBehaviour
     //Moves the player left and right if not dashing or quick falling
     void FixedUpdate()
     {
-        if (!IsDashing)
-        {
-            rb.velocity = new Vector2(Direction * MovementSpeed, rb.velocity.y);
-        }
-
-        if (!IsQFalling)
+        if (!IsDashing && !IsQFalling)
         {
             rb.velocity = new Vector2(Direction * MovementSpeed, rb.velocity.y);
         }
@@ -145,7 +143,19 @@ public class PlayerController : MonoBehaviour
         IsGrounded = true;
         DashNumber = 0;
         CanDash = true;
-        CanQFall = true;
+
+        if (IsQFalling)
+        {
+            //Ends a quick fall
+            IsQFalling = false;
+            rb.gravityScale = 3;
+            tr.emitting = false;
+
+            //Adds a bounus velocoty to next jump
+            JumpStrength = BounusJumpStrength;
+            StartCoroutine(StopBounusJump());
+        }
+
     }
 
     // Ends the player's dash
@@ -156,7 +166,6 @@ public class PlayerController : MonoBehaviour
         DashNumber++;
         rb.gravityScale = 3;
         tr.emitting = false;
-        CanQFall = true;
     }
 
     // Ends the player's quick fall
@@ -166,5 +175,16 @@ public class PlayerController : MonoBehaviour
         IsQFalling = false;
         rb.gravityScale = 3;
         tr.emitting = false;
+
+        //Adds a bounus velocoty to next jump
+        JumpStrength = BounusJumpStrength;
+        StartCoroutine(StopBounusJump());
+
     }
+    private IEnumerator StopBounusJump()
+    {
+        yield return new WaitForSeconds(BounusJumpInputWindow);
+        JumpStrength = OriginalJumpStrength;
+    }
+
 }

@@ -1956,6 +1956,8 @@ MonoBehaviour:
   MovementSpeed: 10
   Direction: 0
   JumpStrength: 15
+  BounusJumpStrength: 30
+  BounusJumpInputWindow: 0.3
   MaxDashNumer: 3
   DashingVelocity: 20
   DashTime: 0.3
