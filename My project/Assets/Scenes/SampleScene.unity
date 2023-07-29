@@ -1672,8 +1672,8 @@ GameObject:
   - component: {fileID: 1860150493}
   - component: {fileID: 1860150490}
   - component: {fileID: 1860150489}
-  - component: {fileID: 1860150495}
   - component: {fileID: 1860150492}
+  - component: {fileID: 1860150495}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -1942,7 +1942,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Time: 0.4
-  m_PreviewTimeScale: 0
+  m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.7
@@ -1961,19 +1961,19 @@ TrailRenderer:
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -1.448772
-        outSlope: -1.448772
+        inSlope: -1.5778108
+        outSlope: -1.5778108
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.18609405
+        inWeight: 0.16155422
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 0.39607844}
-      key1: {r: 1, g: 1, b: 1, a: 0.101960786}
+      key0: {r: 1, g: 1, b: 1, a: 0.5882353}
+      key1: {r: 1, g: 1, b: 1, a: 0.19607843}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1988,7 +1988,7 @@ TrailRenderer:
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 0
+      atime0: 193
       atime1: 65535
       atime2: 0
       atime3: 0
@@ -2010,5 +2010,5 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_MaskInteraction: 0
   m_Autodestruct: 0
-  m_Emitting: 0
+  m_Emitting: 1
   m_ApplyActiveColorSpace: 1
