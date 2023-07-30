@@ -18,7 +18,7 @@ public class PlayerCombat : MonoBehaviour
     public float attackDistance;
     private float directionFaced;
 
-    public bool Attacking = false; 
+    public bool Attacking = false;
 
 
     // Update is called once per frame
@@ -37,10 +37,18 @@ public class PlayerCombat : MonoBehaviour
 
     void Attack()
     {
-        // Find a way to work this into all enemies (using enemy layers) and not just one set enemy please
-        directionFaced = Input.GetAxisRaw("Horizontal");
-        float attackDistance = Vector3.Distance(enemy.transform.position, transform.position);
-        
+        // Detect enemies in range of attack
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+        // Damage them
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+
+            directionFaced = Input.GetAxisRaw("Horizontal");
+            float attackDistance = Vector3.Distance(enemy.transform.position, transform.position);
+        }
+
         if (attackDistance <= 3)
         {
             if (directionFaced == 1)
@@ -53,15 +61,6 @@ public class PlayerCombat : MonoBehaviour
                 // Play the backstab animation
                 Debug.Log("Backstab played!");
             }
-        }
-
-        // Detect enemies in range of attack
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-
-        // Damage them
-        foreach(Collider2D enemy in hitEnemies)
-        {
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
 
         StartCoroutine(EndAttack());
@@ -83,5 +82,4 @@ public class PlayerCombat : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         Attacking = false;
     }
-
 }
