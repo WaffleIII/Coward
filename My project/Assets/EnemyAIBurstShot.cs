@@ -42,7 +42,7 @@ public class AIBurstShot : MonoBehaviour
             if (fireNumber == maxFireNumber)
             {
                 reloadTime = 2f;
-                Reload();
+                StartCoroutine(Reload());
             }  
         }
     }

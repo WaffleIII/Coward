@@ -33,7 +33,8 @@ public class PlayerController : MonoBehaviour
     public float QFallVelocity;
     public float QFallTime;
     private bool IsQFalling = false;
-    
+
+    public bool Attacking = false;
 
     void Start()
     {
@@ -89,6 +90,8 @@ public class PlayerController : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
 
+        Attacking = FindObjectOfType<PlayerCombat>().Attacking;
+
         //Plays animations
         if (IsDashing)
         {
@@ -96,6 +99,15 @@ public class PlayerController : MonoBehaviour
             Animator.SetBool("Idle", false);
             Animator.SetBool("Airborn", false);
             Animator.SetBool("Blink", true);
+            Animator.SetBool("Attacking", false);
+        }
+        else if (Attacking)
+        {
+            Animator.SetBool("Walking", false);
+            Animator.SetBool("Idle", false);
+            Animator.SetBool("Airborn", false);
+            Animator.SetBool("Blink", false);
+            Animator.SetBool("Attacking", true);
         }
         else if (rb.velocity.y != 0)
         {
@@ -103,6 +115,7 @@ public class PlayerController : MonoBehaviour
             Animator.SetBool("Idle", false);
             Animator.SetBool("Airborn", true);
             Animator.SetBool("Blink", false);
+            Animator.SetBool("Attacking", false);
         }
         else if (Direction == 0)
         {
@@ -110,6 +123,7 @@ public class PlayerController : MonoBehaviour
             Animator.SetBool("Idle", true);
             Animator.SetBool("Airborn", false);
             Animator.SetBool("Blink", false);
+            Animator.SetBool("Attacking", false);
         }
         else
         {
@@ -117,6 +131,7 @@ public class PlayerController : MonoBehaviour
             Animator.SetBool("Idle", false);
             Animator.SetBool("Airborn", false);
             Animator.SetBool("Blink", false);
+            Animator.SetBool("Attacking", false);
         }
 
         // Moves the player if dashing

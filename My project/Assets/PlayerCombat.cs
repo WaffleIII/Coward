@@ -18,13 +18,17 @@ public class PlayerCombat : MonoBehaviour
     public float attackDistance;
     private float directionFaced;
 
+    public bool Attacking = false; 
+
+
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= nextAttack)
+        if (Time.time >= nextAttack && !Attacking)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
+                Attacking = true;
                 Attack();
                 nextAttack = Time.time + 1f / attackRate;
             }
@@ -59,6 +63,8 @@ public class PlayerCombat : MonoBehaviour
         {
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
+
+        StartCoroutine(EndAttack());
     }
 
     void OnDrawGizmosSelected()
@@ -70,4 +76,12 @@ public class PlayerCombat : MonoBehaviour
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
+
+    //This is just for animations for now
+    private IEnumerator EndAttack()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Attacking = false;
+    }
+
 }

@@ -632,7 +632,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.179338
+  orthographic size: 9.395141
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -760,8 +760,8 @@ MonoBehaviour:
   speed: 5
   lineOfSight: 10
   shootingRange: 5
-  fireRate: 1
-  maxFireNumber: 5
+  fireRate: 0.1
+  maxFireNumber: 6
   bullet: {fileID: 3301678155552342102, guid: e8e5854b32039684ab91dd0d9e018df4, type: 3}
   bulletParent: {fileID: 240608577}
 --- !u!70 &694447514
