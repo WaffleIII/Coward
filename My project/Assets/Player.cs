@@ -10,7 +10,15 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHP = maxHP;
+        currentHP = maxHP; 
+    }
+
+    private void Update()
+    {
+        if (currentHP > maxHP)
+        {
+            currentHP = maxHP;
+        }
     }
 
     public void TakeDamage(int damage)
@@ -23,6 +31,24 @@ public class Player : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public void Heal(int healingPoints)
+    {
+        //// Detect enemies in range of attack
+        //Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(this.transform.position, healingRange, enemyLayers);
+        
+
+        //// Damage them
+        //foreach (Collider2D enemy in hitEnemies)
+        //{
+        //    float Distance = Vector2.Distance(enemy.transform.position, transform.position);
+
+        //    if (Distance >= healingRange)
+        //    {
+                currentHP += healingPoints;
+            //}
+       // }
     }
 
     void Die()

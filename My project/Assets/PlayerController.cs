@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public TrailRenderer tr;
     public Animator Animator;
     public SpriteRenderer sr;
+    public LayerMask enemyLayers;
 
     [Header("Movement")]
     public float MovementSpeed;
@@ -34,6 +35,10 @@ public class PlayerController : MonoBehaviour
     public float QFallTime;
     private bool IsQFalling = false;
 
+    [Header("Healing")]
+    public float healingRange;
+
+    [Header("Animations")]
     public bool Attacking = false;
 
     void Start()
@@ -79,6 +84,8 @@ public class PlayerController : MonoBehaviour
 
             StartCoroutine(StopQFalling());
         }
+
+        Heal();
 
         //flips the sprite so the player faces the correct way
         if (Direction == 1)
@@ -172,6 +179,10 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(this.transform.position, healingRange);
+    }
 
     // Ends the player's dash
     private IEnumerator StopDashing()
@@ -202,4 +213,23 @@ public class PlayerController : MonoBehaviour
         JumpStrength = OriginalJumpStrength;
     }
 
+    private IEnumerator Heal()
+    {
+        // Heals the player if they are far enough from other enemies
+        // Detect enemies in range of attack
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(this.transform.position, healingRange, enemyLayers);
+
+        // Damage them
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            float Distance = Vector2.Distance(enemy.transform.position, transform.position);
+
+            if (Distance >= healingRange)
+            {
+                yield return new WaitForSeconds(2.5f);
+                GetComponent<Player>().Heal(5);
+                GetComponent<PlayerHealth>().Heal(5);
+            }
+        }
+    }
 }

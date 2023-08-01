@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 65723508}
   - component: {fileID: 65723507}
   m_Layer: 8
-  m_Name: Square (1)
+  m_Name: F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -610,7 +610,7 @@ Camera:
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
-  m_FOVAxisMode: 0
+  m_FOVAxisMode: 1
   m_Iso: 200
   m_ShutterSpeed: 0.005
   m_Aperture: 16
@@ -640,7 +640,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 0
+  m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
@@ -919,7 +919,7 @@ GameObject:
   - component: {fileID: 788513231}
   - component: {fileID: 788513230}
   m_Layer: 8
-  m_Name: Square (6)
+  m_Name: E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1080,7 +1080,7 @@ GameObject:
   - component: {fileID: 906549455}
   - component: {fileID: 906549454}
   m_Layer: 8
-  m_Name: Square (2)
+  m_Name: L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1776,7 +1776,7 @@ GameObject:
   - component: {fileID: 1571748783}
   - component: {fileID: 1571748782}
   m_Layer: 8
-  m_Name: Square (4)
+  m_Name: O
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1904,8 +1904,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1646215849}
   - component: {fileID: 1646215848}
+  - component: {fileID: 1646215850}
   m_Layer: 0
-  m_Name: minos prime
+  m_Name: 'secret minos :pog:'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1971,13 +1972,58 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646215847}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 784.4, y: -114.4, z: 0}
+  m_LocalPosition: {x: 130, y: -151, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1646215850
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646215847}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.43964386, y: -1.7616501}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 49.61, y: 70.166626}
+    newSize: {x: 49.61, y: 70.166626}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 16.71251, y: 54.231583}
+  m_EdgeRadius: 0
 --- !u!1 &1655099534
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,7 +2343,7 @@ GameObject:
   - component: {fileID: 1698307517}
   - component: {fileID: 1698307516}
   m_Layer: 8
-  m_Name: Square (5)
+  m_Name: R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2427,7 +2473,7 @@ GameObject:
   - component: {fileID: 1722391678}
   - component: {fileID: 1722391677}
   m_Layer: 8
-  m_Name: Square (3)
+  m_Name: O
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2683,7 +2729,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackRange: 1.7
-  attackDamage: 40
+  attackDamage: 10
   attackRate: 2
   attackDistance: 0
   Attacking: 0
@@ -2738,6 +2784,9 @@ MonoBehaviour:
   tr: {fileID: 1860150495}
   Animator: {fileID: 1860150492}
   sr: {fileID: 1860150482}
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 64
   MovementSpeed: 10
   Direction: 0
   JumpStrength: 15
@@ -2748,6 +2797,7 @@ MonoBehaviour:
   DashTime: 0.3
   QFallVelocity: 20
   QFallTime: 0.3
+  healingRange: 10
   Attacking: 0
 --- !u!61 &1860150494
 BoxCollider2D:
