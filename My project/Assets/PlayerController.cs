@@ -36,7 +36,11 @@ public class PlayerController : MonoBehaviour
     private bool IsQFalling = false;
 
     [Header("Healing")]
-    public float healingRange;
+    public float HealingRange;
+    public float HealingIntervals;
+    public float HealingStength;
+    private float MinDistance = 100;
+    private bool Healing = false;
 
     [Header("Animations")]
     public bool Attacking = false;
@@ -84,8 +88,6 @@ public class PlayerController : MonoBehaviour
 
             StartCoroutine(StopQFalling());
         }
-
-        Heal();
 
         //flips the sprite so the player faces the correct way
         if (Direction == 1)
@@ -148,6 +150,12 @@ public class PlayerController : MonoBehaviour
             rb.gravityScale = 0;
             return;
         }
+
+        if (!Healing)
+        {
+            StartCoroutine(Heal());
+        }
+
     }
 
     //Moves the player left and right if not dashing or quick falling
@@ -179,9 +187,11 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    //Draws the healing range
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(this.transform.position, healingRange);
+        Gizmos.DrawWireSphere(this.transform.position, HealingRange);
     }
 
     // Ends the player's dash
@@ -207,29 +217,39 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(StopBounusJump());
 
     }
+
+    //Stops the bounus jump
     private IEnumerator StopBounusJump()
     {
         yield return new WaitForSeconds(BounusJumpInputWindow);
         JumpStrength = OriginalJumpStrength;
     }
 
+    //Heals the player
     private IEnumerator Heal()
     {
-        // Heals the player if they are far enough from other enemies
-        // Detect enemies in range of attack
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(this.transform.position, healingRange, enemyLayers);
+        Healing = true;
+        MinDistance = 100;
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(this.transform.position, HealingRange, enemyLayers);
 
-        // Damage them
+        // Finds the closest enemy
         foreach (Collider2D enemy in hitEnemies)
         {
             float Distance = Vector2.Distance(enemy.transform.position, transform.position);
 
-            if (Distance >= healingRange)
+            if (Distance < MinDistance)
             {
-                yield return new WaitForSeconds(2.5f);
-                GetComponent<Player>().Heal(5);
-                GetComponent<PlayerHealth>().Heal(5);
+                MinDistance = Distance;
             }
+        }
+
+        yield return new WaitForSeconds(HealingIntervals);
+        Healing = false;
+
+        //if the closest enemy is outside of the healing range the player is healed
+        if (MinDistance >= HealingRange)
+        {
+            GetComponent<PlayerHealth>().Heal(HealingStength);
         }
     }
 }

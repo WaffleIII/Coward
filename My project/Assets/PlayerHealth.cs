@@ -8,7 +8,8 @@ public class PlayerHealth : MonoBehaviour
     public Image healthBar;
     public GameObject player;
 
-    float health, maxHealth = 100;
+    public float health;
+    float maxHealth = 100;
     float lerpSpeed;
 
     // Start is called before the first frame update
@@ -33,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
 
     void HealthBarFiller()
     {
-        healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, health / maxHealth, lerpSpeed);
+        healthBar.fillAmount = health / 100;
     }
 
     void ColourChanger()
@@ -45,9 +46,11 @@ public class PlayerHealth : MonoBehaviour
 
     public void Damage(float damagePoints)
     {
-        if (health > 0)
+        health -= damagePoints;
+
+        if (health < 0)
         {
-            health -= damagePoints;
+            Die();
         }
     }
 
@@ -57,5 +60,18 @@ public class PlayerHealth : MonoBehaviour
         {
             health += healingPoints;
         }
+    }
+
+    void Die()
+    {
+        // Play death animation
+        // Wait a few seconds then switch to restart screen or whatever game over screen we make
+
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<PlayerController>().enabled = false;
+        GetComponent<PlayerCombat>().enabled = false;
+        GetComponent<PlayerHealth>().enabled = false;
+        this.enabled = false;
+        Destroy(gameObject, 3);
     }
 }
