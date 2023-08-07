@@ -22,13 +22,12 @@ public class Bullet : MonoBehaviour
         bullet = GameObject.Find("Bullet(Clone)");
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.name == "Player")
+        if (other.gameObject.name == "Player")
         {
-            target.GetComponent<Player>().TakeDamage(damage);
             target.GetComponent<PlayerHealth>().Damage(damage);
-            Destroy(bullet, 3);
+            Destroy(this.gameObject);
         }
     }
 }
