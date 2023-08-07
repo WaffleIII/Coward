@@ -13,6 +13,7 @@ public class EnemyAITrack : MonoBehaviour
 
     public GameObject bullet;
     public GameObject trackMarker;
+    private Vector3 trackpos;
 
     private Transform player;
 
@@ -30,10 +31,9 @@ public class EnemyAITrack : MonoBehaviour
         if (Distance <= shootingRange && nextFireTime < Time.time)
         {
             Instantiate(trackMarker, player.transform.position, Quaternion.identity);
+            trackpos = player.transform.position;
             nextFireTime = Time.time + fireRate;
             StartCoroutine(FireBullet());
-            Instantiate(bullet, trackMarker.transform.position, Quaternion.identity);
-            Destroy(trackMarker);
         }
     }
 
@@ -47,5 +47,6 @@ public class EnemyAITrack : MonoBehaviour
     private IEnumerator FireBullet()
     {
         yield return new WaitForSeconds(2.5f);
+        Instantiate(bullet, trackpos, Quaternion.identity);
     }
 }
