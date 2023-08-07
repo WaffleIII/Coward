@@ -30,8 +30,12 @@ public class Enemy : MonoBehaviour
     {
         // Play death animation
 
-        GetComponent<Collider2D>().enabled = false;
-        GetComponent<EnemyAI>().enabled = false;
+            MonoBehaviour[] scripts = gameObject.GetComponents<MonoBehaviour>();
+            foreach (MonoBehaviour script in scripts)
+            {
+                script.enabled = false;
+            }
+
         this.enabled = false;
         Destroy(gameObject, 3);
     }

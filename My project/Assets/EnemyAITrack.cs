@@ -9,8 +9,10 @@ public class EnemyAITrack : MonoBehaviour
     public float shootingRange;
     public float fireRate = 1f;
     private float nextFireTime;
+    private float fireShot;
 
     public GameObject bullet;
+    public GameObject trackMarker;
 
     private Transform player;
 
@@ -27,8 +29,11 @@ public class EnemyAITrack : MonoBehaviour
 
         if (Distance <= shootingRange && nextFireTime < Time.time)
         {
-            Instantiate(bullet, player.transform.position, Quaternion.identity);
+            Instantiate(trackMarker, player.transform.position, Quaternion.identity);
             nextFireTime = Time.time + fireRate;
+            StartCoroutine(FireBullet());
+            Instantiate(bullet, trackMarker.transform.position, Quaternion.identity);
+            Destroy(trackMarker);
         }
     }
 
@@ -37,5 +42,10 @@ public class EnemyAITrack : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, lineOfSight);
         Gizmos.DrawWireSphere(transform.position, shootingRange);
+    }
+
+    private IEnumerator FireBullet()
+    {
+        yield return new WaitForSeconds(2.5f);
     }
 }

@@ -1277,7 +1277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1008288615}
   m_Layer: 0
-  m_Name: PointA
+  m_Name: PatrolPointA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1516,6 +1516,7 @@ MonoBehaviour:
   shootingRange: 20
   fireRate: 5
   bullet: {fileID: 3301678155552342102, guid: fe1a2da90e48b964ebd253e89d7736f3, type: 3}
+  trackMarker: {fileID: 1272637197367901598, guid: 2517dafc042ecae43828cb295ffa252b, type: 3}
 --- !u!70 &1067183256
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1668,7 +1669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1246367869}
   m_Layer: 0
-  m_Name: PointB
+  m_Name: PatrolPointB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2198,7 +2199,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1655099534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da80031558c7bca40a8d6bcac1673591, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a4e209b54e2ef042b6e18de75a6eb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 10
