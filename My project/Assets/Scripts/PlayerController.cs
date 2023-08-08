@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
     //Moves the player left and right if not dashing or quick falling
     void FixedUpdate()
     {
-        if (!IsDashing && !IsQFalling)
+        if (!IsDashing && !IsQFalling && !Attacking)
         {
             rb.velocity = new Vector2(Direction * MovementSpeed, rb.velocity.y);
         }
