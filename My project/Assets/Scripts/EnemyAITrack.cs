@@ -9,7 +9,6 @@ public class EnemyAITrack : MonoBehaviour
     public float shootingRange;
     public float fireRate = 1f;
     private float nextFireTime;
-    private float fireShot;
 
     public GameObject bullet;
     public GameObject trackMarker;
@@ -46,7 +45,7 @@ public class EnemyAITrack : MonoBehaviour
 
     private IEnumerator FireBullet()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(0.75f);
         Instantiate(bullet, trackpos, Quaternion.identity);
     }
 }
