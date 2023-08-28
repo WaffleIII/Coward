@@ -4,27 +4,13 @@ using UnityEngine;
 
 public class BossCheck : MonoBehaviour
 {
-    public LayerMask layerToCheck;
-
     private void Update()
     {
-        GameObject[] objectsInLayer = FindObjectsOfType<GameObject>();
+        GameObject[] EnemysLeft = GameObject.FindGameObjectsWithTag("Enemy");
 
-        bool allDestroyed = true;
-
-        foreach (GameObject obj in objectsInLayer)
+        if (EnemysLeft.Length <= 0)
         {
-            if (obj.layer == layerToCheck && obj.activeSelf)
-            {
-                allDestroyed = false;
-                break;
-            }
-        }
-
-        if (allDestroyed)
-        {
-            // All objects in the layer have been destroyed
-            Debug.Log("All objects in the layer have been destroyed.");
+            Debug.Log("YOU KILLED THEM ALL >:(");
         }
     }
 }
