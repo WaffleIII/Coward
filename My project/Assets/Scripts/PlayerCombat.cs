@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-
     public Transform attackPoint;
     public LayerMask enemyLayers;
 
