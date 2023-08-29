@@ -463,7 +463,7 @@ GameObject:
   - component: {fileID: 467507813}
   m_Layer: 6
   m_Name: EnemyFollowAndShoot
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -801,7 +801,7 @@ GameObject:
   - component: {fileID: 694447513}
   m_Layer: 6
   m_Name: EnemyFollowAndBurstShoot
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1114,7 +1114,7 @@ GameObject:
   - component: {fileID: 1036067930}
   m_Layer: 6
   m_Name: EnemyPatrol
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1294,7 +1294,7 @@ GameObject:
   - component: {fileID: 1067183255}
   m_Layer: 6
   m_Name: EnemyTracking
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3545,7 +3545,7 @@ GameObject:
   - component: {fileID: 1655099541}
   m_Layer: 6
   m_Name: EnemyFollow
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4214,6 +4214,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8bb00e5821ef6544bf5ef343d18df6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerToCheck:
-    serializedVersion: 2
-    m_Bits: 64
+  tp: {fileID: 3301678155552342102, guid: d24257f2647e9294cae48aa5096edd2d, type: 3}
