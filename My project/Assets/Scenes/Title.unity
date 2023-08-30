@@ -355,7 +355,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -217, y: 366}
+  m_AnchoredPosition: {x: 0, y: 330}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &351266795
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Name
+  m_text: Coward
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b1d26f7b4ad0047d7a2757de3bc3937a, type: 2}
   m_sharedMaterial: {fileID: 476805011988902711, guid: b1d26f7b4ad0047d7a2757de3bc3937a, type: 2}
