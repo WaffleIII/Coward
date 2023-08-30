@@ -13,7 +13,6 @@ public class BossCheck : MonoBehaviour
 
         if (EnemysLeft.Length <= 0 && !hasSpawned)
         {
-            Debug.Log("YOU KILLED THEM ALL >:(");
             Instantiate(tp, new Vector3(-6.81f, -3.62f, 0f), Quaternion.identity);
             hasSpawned = true;
             

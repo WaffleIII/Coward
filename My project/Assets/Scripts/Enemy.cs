@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour
 
         if (currentHP <= 0)
         {
-            Debug.Log("Enemy Destroyed!");
             Die();
         }
     }
