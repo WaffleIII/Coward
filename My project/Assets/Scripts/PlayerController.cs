@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
             Animator.SetBool("Blink", false);
             Animator.SetBool("Attacking", true);
         }
-        else if (rb.velocity.y != 0)
+        else if (!IsGrounded)
         {
             Animator.SetBool("Walking", false);
             Animator.SetBool("Idle", false);
@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
     //Moves the player left and right if not dashing or quick falling
     void FixedUpdate()
     {
-        if (!IsDashing && !IsQFalling && !Attacking)
+        if (!IsDashing && !IsQFalling)
         {
             rb.velocity = new Vector2(Direction * MovementSpeed, rb.velocity.y);
         }

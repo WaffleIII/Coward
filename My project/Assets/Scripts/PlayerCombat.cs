@@ -16,7 +16,7 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Attacking && Input.GetKeyDown(KeyCode.Mouse0) && Input.GetAxisRaw("Horizontal") == 0)
+        if (!Attacking && Input.GetKeyDown(KeyCode.Mouse0))
         {
             Attack();
         }

@@ -11,8 +11,28 @@ public class CameraScript : MonoBehaviour
     public float XOffset;
     public float YOffset;
 
+    [Header("X Scroll Speed")]
+    public float MaxDistanceX;
+    private float DirectionX;
+    public float XScrollSpeed;
+
     void Update()
     {
-        Camera.position = new Vector3(Player.position.x + XOffset, Player.position.y + YOffset, -3);
+
+        //MaxDistanceX = Input.GetAxisRaw("Horizontal");
+
+        //Scrolling X
+        if (DirectionX < MaxDistanceX && Input.GetAxisRaw("Horizontal") == 1)
+        {
+            DirectionX += XScrollSpeed;
+        }
+        else if (DirectionX > (MaxDistanceX * -1) && Input.GetAxisRaw("Horizontal") == -1)
+        {
+            DirectionX -= XScrollSpeed;
+        }
+
+        
+        //Moves the thing
+        Camera.position = new Vector3(Player.position.x + XOffset + DirectionX, Player.position.y + YOffset, -3);
     }
 }
